@@ -28,12 +28,16 @@ export class AnyComponent implements OnInit {
     this.newTravel$ = this.anyForm.valueChanges.pipe(
       map(formValue => ({
           ...formValue,
-          creationDate:new Date(),
+          creationDate:new Date()
       }))
       /*
       L'objet émis par l'observable est une instance de class Travel retrounée par Tap
       ...formValue contient les valeurs du formulaires
       les inputs de formulaire doivent avoir le même nom que les attributs de la classe travel
+      */
+     /* 
+     dans la fonction Map, il manque l'association entre le champ Input Theme à associer
+      à l'attribut Topic de la class Travel
       */
   );;
   }
