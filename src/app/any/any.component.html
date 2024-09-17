@@ -1,0 +1,47 @@
+<h3>Remplisser le champ Url avec ../assets/images/atacama.jpg</h3><br><br><br><br>
+<h1>Créer un nouveau voyage</h1>
+<form [formGroup]="anyForm">   
+
+    <div class="form-group">
+        <label for="title">Titre</label>
+        <input id="title" type="text" formControlName="title">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="idDescription" type="text" formControlName="description" rows="4">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="imageUrl">URL de l'image</label>
+        <input id="idImageUrl" type="text" formControlName="imageUrl">
+    </div>
+    <div class="form-group">
+        <label for="location">Lieu</label>
+        <input id="idLocation" type="text" formControlName="location">
+    </div>
+    <div class="form-group">
+        <label for="theme">Thème</label>
+        <input id="idTheme" type="text" formControlName="theme">
+    </div>
+    
+    <div class="action-buttons">
+        <button type="submit" (click)="onSubmitForm()">Enregistrer</button>
+    </div>
+</form>
+
+
+<!--
+[formGroup] est le mot-clé qui permet d'indiquer à Angular
+qu'il s'agit d'un formulaire de type Reactive
+-->
+
+
+<div class="any-card" *ngIf="newTravel$ | async as localVarTravel">
+    <h1>Les données qui seront enregistrées</h1>
+    <h2>Titre:{{ localVarTravel.title | uppercase }}</h2>
+    <img [src]="localVarTravel.imageUrl" [alt]="localVarTravel.title">
+    <p>Description:{{ localVarTravel.description }}</p>
+    <p>Où:{{ localVarTravel.location }}</p>
+    <p>Quand:{{localVarTravel.creationDate}}</p>
+    <p>Thème:{{ localVarTravel.topic }}</p>
+</div>
